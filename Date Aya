@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>سؤال مهم جدًا 👀</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 22px;
+      text-align: center;
+      width: 360px;
+      position: relative;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+      animation: pop 0.6s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 16px;
+      white-space: pre-line;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      margin: 6px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #yes {
+      background: #4CAF50;
+      color: white;
+    }
+
+    #no {
+      background: #f44336;
+      color: white;
+      position: absolute;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- STEP 1 -->
+    <div id="step1">
+      <h1>يا آية 👀💖</h1>
+      <p>يلا نطلع ديت</p>
+      <button id="yes">Yes</button>
+      <button id="no">No</button>
+    </div>
+
+    <!-- STEP 2 -->
+    <div id="step2" class="hidden">
+      <h1>اختيار ذوقك بقى</h1>
+      <button onclick="chooseCinema()">سينما 🎬</button>
+      <button onclick="chooseMuseum()">متحف 🏛️</button>
+    </div>
+
+    <!-- STEP 3 -->
+    <div id="step3" class="hidden">
+      <h1>اتفقنا خلاص </h1>
+      <p id="finalText"></p>
+      <p style="margin-top:15px;">قولي تم 👍 وأنا أظبط كل حاجة</p>
+    </div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const step1 = document.getElementById("step1");
+    const step2 = document.getElementById("step2");
+    const step3 = document.getElementById("step3");
+    const finalText = document.getElementById("finalText");
+
+    // زر No بيهرب
+    noBtn.addEventListener("mouseover", () => {
+      const x = Math.random() * 250;
+      const y = Math.random() * 180;
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    yesBtn.addEventListener("click", () => {
+      step1.classList.add("hidden");
+      step2.classList.remove("hidden");
+    });
+
+    function chooseCinema() {
+      step2.classList.add("hidden");
+      step3.classList.remove("hidden");
+      finalText.innerText =
+        "سينما؟ اختيار عظيم 😎🎬\n" +
+        "بس نوضح حاجة صغيرة:\n" +
+        "أنا الهختار الفيلم 🍿😈\n" +
+        "وأوعدك إنه هيعجبك.";
+    }
+
+    function chooseMuseum() {
+      step2.classList.add("hidden");
+      step3.classList.remove("hidden");
+      finalText.innerText =
+        "متحف؟ ذوق عالي جدًا 🧠✨\n" +
+        "واضح إنك classy 👏\n" +
+        "كده القيادة ليكي وأنا مستمتع.";
+    }
+  </script>
+
+</body>
+</html>
